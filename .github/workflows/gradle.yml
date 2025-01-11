@@ -1,19 +1,13 @@
 name: Java CI
 
 on:
-  push:
-    branches:
-      - '**'
-    tags:
-      - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
-  pull_request:
-    branches:
-      - '**'
+  workflow_dispatch:
 
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: arc-runner-set
+
 
     steps:
     - uses: actions/checkout@v2
@@ -31,4 +25,4 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-gradle-
     - name: Test with Gradle
-      run: ./gradlew clean test
+      run: ./gradlew clean build test
