@@ -26,3 +26,5 @@ jobs:
           ${{ runner.os }}-gradle-
     - name: Test with Gradle
       run: ./gradlew clean build -x test
+    - name: List files
+      run:  ls -al build/libs
